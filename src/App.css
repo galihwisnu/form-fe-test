@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+:root {
+  --purple: #6200ff;
+}
+.text-purple {
+  color: var(--purple);
+}
+
+.btn-purple {
+  background-color: var(--purple);
+  color: #fff;
+}
