@@ -1,26 +1,28 @@
 import React from "react";
 import FormInput from "../components/FormInput";
 
-function SignUp() {
+function SignUp({ formData, setFormData }) {
   return (
     <>
       <FormInput
         label="Email"
         type="email"
-        value=""
-        onChange={(e) => console.log(e)}
+        value={formData.email}
+        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
       />
       <FormInput
         label="Password"
         type="password"
-        value=""
-        onChange={(e) => console.log(e)}
+        value={formData.password}
+        onChange={(e) => setFormData({ ...formData, password: e.target.value })}
       />
       <FormInput
         label="Confirm Password"
         type="password"
-        value=""
-        onChange={(e) => console.log(e)}
+        value={setFormData.confirmPassword}
+        onChange={(e) =>
+          setFormData({ ...formData, confirmPassword: e.target.value })
+        }
       />
     </>
   );

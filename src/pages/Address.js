@@ -1,20 +1,20 @@
 import React from "react";
 import FormInput from "../components/FormInput";
 
-function Address() {
+function Address({ formData, setFormData }) {
   return (
     <>
       <FormInput
         type="text"
         label="Street"
-        value=""
-        onChange={(e) => console.log(e)}
+        value={formData.street}
+        onChange={(e) => setFormData({ ...formData, street: e.target.value })}
       />
       <FormInput
         type="text"
         label="City"
-        value=""
-        onChange={(e) => console.log(e)}
+        value={formData.city}
+        onChange={(e) => setFormData({ ...formData, city: e.target.value })}
       />
     </>
   );
