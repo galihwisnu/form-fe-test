@@ -1,34 +1,44 @@
 import React, { useState } from "react";
-import Address from "../pages/Address";
-import PersonalInfo from "../pages/PersonalInfo";
-import SignUp from "../pages/SignUp";
+import AccInfo from "../pages/AccInfo";
+import BusinessInfo from "../pages/BusinessInfo";
+import OwnerInfo from "../pages/OwnerInfo";
 import Button from "./Button";
-import Welcome from "../pages/Welcome";
+import Review from "../pages/Review";
 
 function Form() {
   const [page, setPage] = useState(0);
   const [formData, setFormData] = useState({
+    fullName: "",
     email: "",
-    password: "",
-    confirmPassword: "",
-    firstName: "",
-    lastName: "",
-    username: "",
-    street: "",
+    phoneNum: "",
+    idCard: "",
+    businessName: "",
+    businessPhone: "",
+    country: "",
+    province: "",
     city: "",
+    address: "",
+    businessNumb: "",
+    emailAcc: "",
+    accPhone: "",
   });
-  const formTitle = ["Sign Up", "Personal Info", "Address", "Done"];
+  const formTitle = [
+    "Owner Information",
+    "Business Information",
+    "Account Information",
+    "Review",
+  ];
 
   const pageDisplay = () => {
     if (page === 0) {
-      return <SignUp formData={formData} setFormData={setFormData} />;
+      return <OwnerInfo formData={formData} setFormData={setFormData} />;
     } else if (page === 1) {
-      return <PersonalInfo formData={formData} setFormData={setFormData} />;
+      return <BusinessInfo formData={formData} setFormData={setFormData} />;
     } else if (page === 2) {
-      return <Address formData={formData} setFormData={setFormData} />;
+      return <AccInfo formData={formData} setFormData={setFormData} />;
     } else {
       console.log(formData);
-      return <Welcome formData={formData} />;
+      return <Review formData={formData} />;
     }
   };
   return (
@@ -53,13 +63,13 @@ function Form() {
         ></div>
       </div>
       <form className="form-container">
-        <h1
+        <h2
           className={`"display-2" ${
             page === 3 ? "text-success" : "text-purple"
           }`}
         >
           {formTitle[page]}
-        </h1>
+        </h2>
         <div className="text-start">{pageDisplay()}</div>
         <div className="mt-5">
           {page !== 0 && page !== 3 ? (
@@ -78,7 +88,7 @@ function Form() {
             onClick={(e) => {
               e.preventDefault();
               if (page === formTitle.length - 1) {
-                window.alert("Are you done with the regostration?");
+                window.alert("Regsitration has been SUCCESS!");
                 window.location.reload();
               } else {
                 setPage((currPage) => currPage + 1);
